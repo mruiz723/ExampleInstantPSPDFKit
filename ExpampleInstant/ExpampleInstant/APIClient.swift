@@ -11,6 +11,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum Result<Wrapped> {
     case failure(reason: String)
@@ -72,6 +73,21 @@ struct APIClient {
                 }
                 
                 completionHandler(.success(authenticationToken))
+            }
+        }
+    }
+    
+    func addPDF( completion:@escaping (_ documentIdentifier: String) -> Void) {
+        //localhost:3000/ios?username=marlon&ruta=http://www.passionforlanguage.com/wp-content/uploads/2016/08/OoPdfFormExample.pdf&nameArchive=marlon.pdf
+        
+        let url = baseURL.appendingPathComponent("/ios")
+        
+        Alamofire.request(url, method: .post, parameters: ["ruta":"http://www.passionforlanguage.com/wp-content/uploads/2016/08/OoPdfFormExample.pdf", "username": "marlon", "nameArchive": "marlon.pdf"], encoding: JSONEncoding.default).responseJSON { response in
+//            debugPrint(response)
+            if let result = response.result.value {
+                let JSON = result as! NSDictionary
+                print(JSON)
+                completion(JSON["id"]! as! String)
             }
         }
     }

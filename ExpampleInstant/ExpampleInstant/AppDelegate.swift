@@ -19,17 +19,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        PSPDFKit.setLicenseKey("GCEj+UpyNHpozgGIn9wG2Kp8EqWYZK7Ex4YZOP1svEPXlk/hkTppt3MK72LNd+dF5qf6EW0IEYTCQ3jZzPR+ocic0QTKXGDK4RfVD4kGJY4cSTc94IvIRvPx48RCXXHz3sbhcQBXbogTrfzo2SP+ec7mBIOXZ6NlgWoz0BKHeMaFlF+9E8bVCtKknjkgolVfkB3mdUb1MWXpWcZHknRXyM0Ue8/RS7huJEXKRc1I/DWt24AtoD5uJW324mzOtQLJTX1tZu8lKGM6Sf021OS1rAXdPgGiksTW1jI21WtLo+bSs1GK7kf5rcXB2MWri3P7L0mcXI1ieBej0p8XOpO87K0kRMzp0UF1Fr5PiNl55Oe/o+2YfwiLJAaud+o0mudWtA4vg5Fh7CT5Br0TmtyiNyO/JPRYWL24GahFITR7oOOEy6R+s4rgKzzp0FaDr0DJ")
+        PSPDFKit.setLicenseKey("uwthezBpSBMxm7JuFYUFZzVCtABVTqIVH6zC4TfK9IzHyr2vfVQ20Xnv5jvt/7DKz2Mvf1qcB21+hJz2TAGRziNMSpCi9Uin9gkCGeLnmTo2Yzbis+OHFukusbWXYmr0Q2cqr+SQVbBayWd4ilDRv7s+lG60PZUI/TakSOGMWbqYB9sRinW8GjwdK1LXLoC19767n/F/4XgMnhjWzIylzpDzTiiR9ECI7lB9f6JBa1q4IlTCYT7QefxPFkpSmtXMXKZKmKXZ2bTKNwgv1hEGIyUGwxPChD6BADY6YJwRZtW9JvjThP+0YORikMODY88rJ4n7Axz+WKs/r1b3QSY6EpJRTHquuUV7Ya1ohqBS57nuBThFr8eDxImONE3szcrZS66b1CTVOG93Qx+0AvtQ8ughFAIitAKaLTcTjiZgMY1AIjKaZ/dytZ/DOFQpr1ft")
+        
+//        PSPDFKit.setLicenseKey("GCEj+UpyNHpozgGIn9wG2Kp8EqWYZK7Ex4YZOP1svEPXlk/hkTppt3MK72LNd+dF5qf6EW0IEYTCQ3jZzPR+ocic0QTKXGDK4RfVD4kGJY4cSTc94IvIRvPx48RCXXHz3sbhcQBXbogTrfzo2SP+ec7mBIOXZ6NlgWoz0BKHeMaFlF+9E8bVCtKknjkgolVfkB3mdUb1MWXpWcZHknRXyM0Ue8/RS7huJEXKRc1I/DWt24AtoD5uJW324mzOtQLJTX1tZu8lKGM6Sf021OS1rAXdPgGiksTW1jI21WtLo+bSs1GK7kf5rcXB2MWri3P7L0mcXI1ieBej0p8XOpO87K0kRMzp0UF1Fr5PiNl55Oe/o+2YfwiLJAaud+o0mudWtA4vg5Fh7CT5Br0TmtyiNyO/JPRYWL24GahFITR7oOOEy6R+s4rgKzzp0FaDr0DJ")
         
         // The base URL needs to match the IP of your local dev machine so you can connect from your WiFi to the local server
         // You also need to set BASE_URL in the docker-compose.yml!
         // (To retrieve your IP address hold Option while clicking the WiFi icon in the macOS menu bar)
         
-        let instantClient = PSPDFInstantClient(serverURL: URL(string: "http://http://198.199.71.217:5000")!)
+        let instantClient = PSPDFInstantClient(serverURL: URL(string: "http://198.199.71.217:5000")!)
         
         // Client for the example server, as a stand-in for your own backend.
         // Note the example server expects an empty password.
-        let apiClient = APIClient(baseURL: URL(string: "http://198.199.71.217:3000")!, userID: "dashboard", password: "secret")
+        let apiClient = APIClient(baseURL: URL(string: "http://198.199.71.217:3000")!, userID: "marlon", password: "")
+        
+//        let instantClient = PSPDFInstantClient(serverURL: URL(string: "http://192.168.2.16:5000")!)
+//        
+//        // Client for the example server, as a stand-in for your own backend.
+//        // Note the example server expects an empty password.
+//        let apiClient = APIClient(baseURL: URL(string: "http://192.168.2.16:3000")!, userID: "marlon", password: "")
+
         
         let documentsController = DocumentsViewController(instantClient: instantClient, apiClient: apiClient)
         documentsController.title = "Instant"

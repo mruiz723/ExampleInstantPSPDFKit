@@ -65,6 +65,8 @@ class DocumentsViewController: UITableViewController, PSPDFInstantClientDelegate
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadList))
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPDF))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,6 +106,12 @@ class DocumentsViewController: UITableViewController, PSPDFInstantClientDelegate
         documentListFetchTask?.cancel()
         documentListFetchTask = task
         task.resume()
+    }
+    
+    func addPDF() {
+       apiClient.addPDF { (documentIdentifier) in
+            debugPrint(documentIdentifier)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
